@@ -15,3 +15,9 @@ jobs:
 
       - name: Execute Automated QA Script
         run: python -m pytest test_calculator.py
+
+        - name: Install Testing Tool (pytest)
+        run: pip install pytest
+
+      - name: Execute Automated QA Script
+        run: python -m pytest test_calculator.py
