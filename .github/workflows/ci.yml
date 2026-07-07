@@ -13,9 +13,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Execute Automated QA Script
-        run: python -m pytest test_calculator.py
-
       - name: Install Testing Tool (pytest)
         run: pip install pytest
 
