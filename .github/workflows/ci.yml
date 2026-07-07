@@ -1,0 +1,17 @@
+name: Python Quality Control Line
+on: [push] # Trigger the line whenever code is updated
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest # Spin up a temporary Linux sandbox
+    steps:
+      - name: Copy code into Sandbox
+        uses: actions/checkout@v4
+
+      - name: Fire up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute Automated QA Script
+        run: python -m pytest test_calculator.py
