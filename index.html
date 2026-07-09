@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Mock Login</title></head>
+<body>
+    <h2>Login Page</h2>
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button id="loginBtn" onclick="checkLogin()">Submit</button>
+    <p id="message"></p>
+
+    <script>
+        function checkLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const msg = document.getElementById('message');
+            if (user === "admin" && pass === "secret") {
+                msg.innerText = "Welcome Admin!";
+                msg.style.color = "green";
+            } else {
+                msg.innerText = "Invalid Credentials";
+                msg.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
