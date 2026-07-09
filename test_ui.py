@@ -22,7 +22,7 @@ def test_successful_login():
         
         # 4. Mimic user actions (Type and click)
         page.fill("#username", "admin")
-        page.fill("#password", "secret")
+        page.fill("#password", "temp-secret")
         page.click("#loginBtn")
         
         # 5. The Assertion (Verify if the welcome message appeared)
