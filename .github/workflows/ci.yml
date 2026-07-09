@@ -13,15 +13,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Testing Tool
-        run: pip install pytest playwright pytest-playwright
+      - name: Install Testing Tools
+        run: pip install pytest playwright pytest-playwright pytest-xprocess
 
       - name: Install Browser Drivers
         run: playwright install chromium --with-deps
 
       # 💻 CLEAN BARE COMMAND ONLY
       - name: Run tests with artifact output
-        run: pytest
+        run: python -m pytest
 
       - name: Upload Test Artifacts
         if: always()
