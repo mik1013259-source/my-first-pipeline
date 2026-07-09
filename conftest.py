@@ -5,6 +5,7 @@ from xprocess import ProcessStarter
 
 def start_server(xprocess):
     class Starter(ProcessStarter):
+        
         # The command to start your local server
         args = ["python", "-m", "http.server", "8080"]
         
