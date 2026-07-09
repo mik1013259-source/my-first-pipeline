@@ -15,8 +15,7 @@ jobs:
 
       - name: Install Testing Tool
         run:          
-          pip install pytest                  
-          pip install playwright pytest-playwright
+          pip install pytest playwright pytest-playwright
 
       #Install the hidden Linux browser binaries inside the sandbox
       - name: Install Browser Drivers
