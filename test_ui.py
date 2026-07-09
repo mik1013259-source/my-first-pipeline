@@ -1,17 +1,10 @@
-import subprocess
-import time
-import pytest
+#import subprocess
+#import time
+#import pytest
 
-@pytest.fixture(scope="module", autouse=True)
+# @pytest.fixture(scope="module", autouse=True)
 
-def start_local_server():
-    server = subprocess.Popen(["python", "-m", "http.server", "8080"])
-    time.sleep(1) 
-    yield
-    server.kill()  # Use kill() instead of terminate() to prevent CI hangs
-
-
-def test_successful_login(page):  #  Inject the 'page' fixture here
+def test_successful_login(page):
     page.goto("http://localhost:8080/index.html")
 
     page.fill("#username", "admin")
@@ -20,5 +13,5 @@ def test_successful_login(page):  #  Inject the 'page' fixture here
 
     success_message = page.locator("#message")
     assert success_message.text_content() == "Welcome Admin!"
-        
-    browser.close()
+
+    # browser.close()
