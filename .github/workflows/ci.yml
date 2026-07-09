@@ -18,7 +18,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest                  
           pip install playwright pytest-playwright
-          playwright install --with-deps
 
       #Install the hidden Linux browser binaries inside the sandbox
       - name: Install Browser Drivers
