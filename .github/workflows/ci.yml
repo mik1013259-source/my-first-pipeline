@@ -14,22 +14,20 @@ jobs:
           python-version: '3.11'
 
       - name: Install Testing Tool
-        run:          
-          pip install pytest playwright pytest-playwright
+        run: pip install pytest playwright pytest-playwright
 
-      # Install the hidden Linux browser binaries inside the sandbox
       - name: Install Browser Drivers
         run: playwright install chromium --with-deps
 
+      # 💻 CLEAN BARE COMMAND ONLY
       - name: Run tests with artifact output
-      # This saves videos and screenshots to the 'test-results' folder
-        run: pytest --browser chromium --screenshot on --video on --output=test-results/
+        run: pytest
 
       - name: Upload Test Artifacts
-      # This step runs even if the previous test step fails
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-artifacts
           path: test-results/
           retention-days: 7
+
