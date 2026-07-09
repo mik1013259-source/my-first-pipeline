@@ -17,10 +17,19 @@ jobs:
         run:          
           pip install pytest playwright pytest-playwright
 
-      #Install the hidden Linux browser binaries inside the sandbox
+      # Install the hidden Linux browser binaries inside the sandbox
       - name: Install Browser Drivers
         run: playwright install chromium --with-deps
 
       - name: Execute Automated QA Script
         # run: python -m pytest test_calculator.py
         run: python -m pytest
+
+      # Upload screenshots and videos on failure
+      - name: Upload Test Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-artifacts
+          path: test-results/
+          retention-days: 7  
