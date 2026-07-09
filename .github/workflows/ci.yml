@@ -21,14 +21,15 @@ jobs:
       - name: Install Browser Drivers
         run: playwright install chromium --with-deps
 
-      - name: Execute Automated QA Script
-        # run: python -m pytest test_calculator.py
-        run: python -m pytest
+      - name: Run tests with artifact output
+      # This saves videos and screenshots to the 'test-results' folder
+        run: pytest --browser chromium --screenshot on --video on --output=test-results/
 
-      # Upload screenshots and videos on failure
       - name: Upload Test Artifacts
-        if: failure()
+      # This step runs even if the previous test step fails
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-failure-artifacts
-          retention-days: 2
+          name: playwright-artifacts
+          path: test-results/
+          retention-days: 7
