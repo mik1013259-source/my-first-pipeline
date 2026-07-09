@@ -1,9 +1,3 @@
-#import subprocess
-#import time
-#import pytest
-
-# @pytest.fixture(scope="module", autouse=True)
-
 def test_successful_login(page):
     page.goto("http://localhost:8080/index.html")
 
@@ -13,5 +7,3 @@ def test_successful_login(page):
 
     success_message = page.locator("#message")
     assert success_message.text_content() == "Welcome Admin!"
-
-    # browser.close()
